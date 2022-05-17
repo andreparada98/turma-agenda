@@ -1,0 +1,95 @@
+MEAN Stack
+
+MongoDb
+Express.js
+Angular
+Node.js
+
+> MongoDB
+Download do Mongo: www.mongodb.com
+Menu: products > community edition > community server
+O site identifica o sistema operacional e sugere a versão para download
+* Importante: Em 'Service Configuration', selecionar opção 'Install MongoDB as a Service' e deixar opção 'Run service as Network Service user' selecionado
+* Não precisa instalar o Mongo Compass, é uma versão visual pro Mongo.
+Algumas vezes o sistema operacional pede pra reiniciar após a instalação.
+
+> Express.js
+Não realiza download
+Site: www.expressjs.com
+
+> AngularJS
+Site: www.angularjs.org
+
+> Angular (atual)
+Site: www.angular.io
+
+> Node.js
+Site: www.nodejs.org
+Para ver a versão instalada, executar o comando:
+$ node -v
+
+> VS Code (Visual Studio Code)
+Site: https://code.visualstudio.com/
+Alguns plugins de sugestão:
+- EditorConfig for VS Code
+- Blank Line Organizer
+- Color Highlight
+- Git History
+- Git Lens
+- TSLint
+- Angular Language Service
+
+> Git Bash
+Site: https://git-scm.com/downloads
+
+> Git Fork
+Site: https://git-fork.com/
+
+******************************************************************
+
+Diferença entre let, var e const?
+- const é uma constante que uma vez declarado o valor ele não é alterado
+- var é uma variável, logo o seu valor é alterável, mas ele funciona num escopo 'global'
+- let é uma variável que também pode ter seu valor alterável, mas ele funciona dentro de escopos/contexto, exemplo:
+se criado dentro de um if, ele funcionará somente no if e não fora dele
+
+    var idade = 10;
+
+    for (let index = 0; index < array.length; index++) {
+        let novoNumero = index;
+        const element = array[index];
+    }
+    uso do novoNumero e index - não funciona
+    uso de idade funciona fora e dentro do for
+
+
+******************************************************************
+
+Módulo: sequencia de 'coisas' escritas em JS - listas, objetos, funções...
+
+Essas 'coisas' escritas, esses elementos, são expostos (exportados) em forma de módulo, como se escrevessemos uma biblioteca de funções, pois a ideia é ser reaproveitado. E para ser usado, precisa ser 'importado' no arquivo que quer utilizar o módulo.
+
+
+******************************************************************
+
+Tipos de variáveis:
+var n = 10;                             // inteiro ou number
+var s = 'Minha primeira aula'           // string - pode ser aspas simples ou duplas
+var ns = '10'                           // string
+var a = []                              // array ou lista
+var a = [1, '2', '3', 4]                // array ou lista - dentro eu tenho numeros e strings
+var o = {}
+var o = {titulo: 'Minha primeira aula'} // objeto, composto por label/atributo e valor do label/atributo - label/atributo é 'titulo'
+var o = {dia: '16/05/2022', array: a}
+
+*Length funciona com strings e arrays/listas
+
+******************************************************************
+
+Arrow Function: função escrita de forma simplificada, com uso do símbolo de flecha '=>'
+A estrutura usada de arrow function costuma ser o retorno de callback de funções
+A palavra 'function' pode ser retirada e as chaves também
+Como a arrow function espera um retorno, a palavra 'return' também pode ser retirada
+
+-> Exemplos no arquivo de funcoes.js
+
