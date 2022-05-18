@@ -1,0 +1,166 @@
+Request e Response
+- Request são solicitações, o que é requerido
+- Response são as respostas que esperamos e que iremos utilizar das requisições realizadas
+
+-> require('http')
+Para criar o servidor, utilizaremos o http.createServer, que utilizará uma função de callback com request e Response
+
+-> require('fs')
+Utilizaremos o file system para leitura e execução de arquivos
+
+Com o file system, utilizaremos o 'readFile' que tem 2 parametros:
+1. o arquivo a ser lido
+2. opcional que funciona como callback para o que será executado conforme o arquivo for lido
+    2.1 No caso de usar a função de callback, precisamos de 2 parametros:
+    - possivel erro
+    - conteudo da pagina
+
+O file system lê o arquivo e armazena e o parametro de função callback pega o conteudo e exibe
+
+******************************************************************
+
+Tipos de módulo que vimos:
+
+- Criados por nós: para ser usado colocamos referência ao caminho - exemplo: './nomeDoModulo'
+exports.nomeVariavel (quando exportamos de forma individual)
+module.exports (quando exportamos um objeto de uma unica vez)
+
+- Node: para ser usado colocamos o nome direto da biblioteca/módulo - exemplo: 'nomeDoModulo'
+definido pela própria biblioteca
+
+- Terceiros (de outras pessoas): para ser usado em projetos NodeJS precisamos de uma estrutura específica/minima do projeto
+    - package.json (arquivo)
+    - node_modules (pasta) -> é uma pasta que armazena nela os arquivos dos módulos da aplicação que são instalados com o 'npm i', mas como eles são declarados no package.json como dependencia, eu não preciso salvar e enviar essa pasta no GIT, por exemplo
+estrutura similar ao Angular, por exemplo, que esses arquivos configuram esses módulos e serão colocados no projeto
+
+Site do npm: https://www.npmjs.com/
+
+******************************************************************
+
+JSON - JavaScript Object Notation
+
+Diferença de Objeto e JSON
+- JavaScript Object
+{
+    nome: 'Mariana',
+    idade: 32
+}
+
+- JSON
+{
+    "nome": "Mariana",
+    "idade": 32
+}
+
+******************************************************************
+
+- Versionamento Semântico: https://semver.org/
+
+******************************************************************
+
+-> Para leitura:
+- Micro front-end
+- Mono e multi repo
+- Single SPA (framework)
+- Feature Flag / Feature Toggle
+
+******************************************************************
+
+Comandos:
+$ node -> usamos para executar arquivos .js para rodar arquivos criados
+$ npm -> usamos para lidar com Projetos Node (NodeJs. Angular, ReactJs, etc)
+npm = node package manager -> é possível instalar módulos, atualizar módulos, etc...
+
+******************************************************************
+
+Comando: npm init
+Esse comando inicialização um projeto, criando o arquivo package.json
+1. Nome do projeto: não podemos colocar espaço! Automaticamente é sugerido o nome da pasta
+2. Versão: vem Automaticamente sugerido 1.0.0 - versão baseada em versionamenteo semantico
+3. Descrição: não é obrigatório, mas é a ideia de descrição do seu projeto
+4. Ponto de partida: arquivo de execução inicial do seu projeto
+5. Teste
+6. Git repository
+7. Palavras chave
+8. Autor
+9. Tipo de licença
+
+O comando de npm init sugere que após criar o package.json utilize o comando de npm install para instalar pacotes
+
+$ npm install <nome_modulo>             (apenas instala o módulo)
+$ npm install <nome_modulo> --save      (instala e adicionar o módulo no package.json)
+$ npm install <nome_modulo> --save-dev  (instala dependencias de desenvolvimento)
+$ npm install <nome_modulo> -g          (instala de forma global, fica na máquina e nao no package.json)
+$ npm i <nome_modulo>                   (instalação de forma abreviada usando 'i')
+
+******************************************************************
+
+Curiosidade do GIT: o GIT disponibiliza um arquivo chamado .gitignore, aonde conseguimos colocar informações que devem ser ignoradas ao enviarmos arquivos para o repositório do GIT quando salvamos as alterações dos nossos projetos.
+Podemos ignorar arquivos de .thumbs, .DS, pasta 'node_modules', pasta 'dist' do Angular, etc...
+O GIT precisa manter em seu versionamento somente arquivos importantes para a execução da aplicação como: html, js/ts, css...
+
+.gitignore
+/dist
+/tmp
+/temp
+/node_modules
+/build
+Thumbs.db
+.DS_Store
+
+******************************************************************
+
+Express tem a estrutura MVC
+
+- O model não é obrigatório pois o View e o Controller são as camadas que são carregadas e compreendidas como 'front' e 'back'
+
+Para criar a aplicação express, executamos o comando:
+
+$ express nodeEventos --view=ejs
+
+Ao criar a aplicação de express, executamos os seguintes comando:
+
+$ cd nodeEventos
+$ npm i
+$ npm audit fix --force
+
+
+******************************************************************
+
+Comando de update do npm
+
+Baseado nas possibilidades de atualização de pacotes do package.json, podemos rodar o comando:
+
+$ npm update
+$ npm update <nome_modulo>
+
+******************************************************************
+
+Para 'observar' e monitorar as execuções do node, instalaremos:
+
+$ npm i nodemon -g
+
+******************************************************************
+
+No modelo de aplicação que estamos criando, dentro de 'nodeEventos' vamos instalar:
+-> express-load
+$ npm i express-load --save
+
+Se necessário, rodar:
+$ npm audit fix --force
+
+
+******************************************************************
+
+Tentem fazer o exercicio visual (HTML e CSS)
+-> Página inicio: criar HTML com formulário
+    - form com action de uma rota '/login'
+    - método post
+    - uma classe de CSS para vcs customizarem
+    - Campos de formulário:
+        - nome tipo texto
+        - senha do tipo password
+        - botao do tipo submit
+-> Arquivo CSS
+    - se quiser usar bootstrap, a vontade
+    - customizar um CSS simples/bonitinho pro formulario
