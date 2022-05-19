@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Poppins&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+*:focus {
+	outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-internal-autofill-selected {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Macondo', cursive;
+	text-align: center;
+	color: purple;
+}
+
+h1 {
+	font-size: 30px;
+}
+
+body {
+	height: 100vh;
+	min-width: 300px;
+}
+
+.container {
+	width: 90%;
+	max-width: 900px;
+	min-width: 270px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+#login {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 300px;
+
+	.container {
+		max-width: 400px;
+		border: 1px solid purple;
+		border-radius: 20px;
+	}
+
+}
+
+#header {
+	.container {
+		p {
+			text-align: right;
+
+			&::before {
+				content: "Seja bem-vindo,"
+			}
+
+			&::after {
+				content: "!"
+			}
+		}
+
+		nav {
+			margin-top: 30px;
+
+			ul {
+				list-style: none;
+
+				li {
+					display: inline-block;
+
+					a {
+						display: block;
+						padding: 5px 10px;
+						background-color: #6930bb;
+						color: white;
+						text-decoration: none;
+						border-radius: 4px;
+
+						&:hover {
+							background-color: #9059e0;
+						}
+
+						&.active {
+							background-color: #e03bf0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.formulario {
+	div {
+		margin: 10px 0 30px;
+
+		label {
+			width: 100%;
+			display: block;
+			color: #450745;
+		}
+
+		input {
+			width: 100%;
+			display: block;
+			font-size: 16px;
+			margin: 5px 0;
+			padding: 0 10px;
+			height: 35px;
+			line-height: 35px;
+			border: 1px solid purple;
+			border-radius: 3px;
+			background-color: white;
+			background-repeat: no-repeat;
+			background-position: 6px center;
+
+			&.iconBG {
+				padding-left: 30px;
+
+			}
+
+			&#nomeLogin {
+				background-image: url(./../images/user-icon.svg);
+				background-size: 22px;
+			}
+
+			&#senhaLogin {
+				background-image: url(./../images/lock-icon.svg);
+				background-size: 14px;
+			}
+		}
+
+		button {
+			width: 70%;
+			max-width: 200px;
+			min-width: 100px;
+			margin: 0 auto;
+			display: block;
+			height: 35px;
+			line-height: 35px;
+			border: 0;
+			background-color: purple;
+			color: white;
+			cursor: pointer;
+			border-radius: 5px;
+
+			&:hover {
+				background-color: #450745;
+			}
+		}
+	}
+}
