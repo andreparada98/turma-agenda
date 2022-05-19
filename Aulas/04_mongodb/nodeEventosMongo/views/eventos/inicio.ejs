@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		  content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<title>Eventos :: Página Inicial</title>
+</head>
+
+<body>
+	<header>
+		<h1>Eventos</h1>
+		<p>Seja bem vindo, <%= usuarioSession.nome
+				%>
+		</p>
+
+		<nav>
+			<ul>
+				<li>
+					<a href="/inicio">
+						Lista de Eventos
+					</a>
+				</li>
+				<li>
+					<a href="/cadastroEvento">
+						Cadastro de Evento
+					</a>
+				</li>
+				<li>
+					<a href="/usuarios">
+						Lista de Usuários
+					</a>
+				</li>
+				<li>
+					<a href="/cadastroUsuario">
+						Cadastro de Usuário
+					</a>
+				</li>
+				<li>
+					<a href="/logout">Sair</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section id="container">
+		<table>
+			<tr>
+				<th>
+					Descrição
+				</th>
+				<th>
+					Data
+				</th>
+				<th>
+					Valor
+				</th>
+			</tr>
+			<tr>
+				<td>teste</td>
+				<td>xx/xx/xxxx</td>
+				<td>R$ xx,xx</td>
+			</tr>
+		</table>
+	</section>
+</body>
+
+</html>

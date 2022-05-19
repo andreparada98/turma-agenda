@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		  content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<title>Inicio</title>
+	<link rel="stylesheet"
+		  href="/css/style.css" />
+</head>
+
+<body>
+	<section id="inicio">
+		<h1>Gerenciamento de Eventos</h1>
+		<form action="/login"
+			  method="post"
+			  class="formulario">
+			<div>
+				<label for="nomeLogin">Nome</label>
+				<input type="text"
+					   id="nomeLogin"
+					   required="required"
+					   autocomplete="name"
+					   name="usuario[nome]" />
+			</div>
+			<div>
+				<label for="senhaLogin">Senha</label>
+				<input type="password"
+					   id="senhaLogin"
+					   required="required"
+					   autocomplete="new-password"
+					   name="usuario[senha]" />
+			</div>
+			<div>
+				<button type="submit">Login</button>
+			</div>
+		</form>
+	</section>
+</body>
+
+</html>

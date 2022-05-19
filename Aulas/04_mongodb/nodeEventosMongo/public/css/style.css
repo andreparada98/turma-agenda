@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&family=Poppins&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+*:focus {
+	outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Macondo', cursive;
+}
+
+h1 {
+	text-align: center;
+	color: purple;
+	font-size: 30px;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 300px;
+}
+
+#inicio {
+	width: 90%;
+	max-width: 400px;
+	min-width: 270px;
+	margin: 0 auto;
+	padding: 30px;
+	border: 1px solid purple;
+	border-radius: 20px;
+}
+
+.formulario div {
+	margin: 10px 0 30px;
+}
+
+.formulario div label {
+	width: 100%;
+	display: block;
+	color: #450745;
+}
+
+.formulario div input {
+	width: 100%;
+	display: block;
+	font-size: 16px;
+	margin: 5px 0;
+	padding: 0 10px 0 30px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid purple;
+	border-radius: 3px;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-position: 6px center;
+}
+
+.formulario div input#nomeLogin {
+	background-image: url(./../images/user-icon.svg);
+	background-size: 22px;
+}
+
+.formulario div input#senhaLogin {
+	background-image: url(./../images/lock-icon.svg);
+	background-size: 14px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.formulario div button {
+	width: 70%;
+	max-width: 200px;
+	min-width: 100px;
+	margin: 0 auto;
+	display: block;
+	height: 35px;
+	line-height: 35px;
+	border: 0;
+	background-color: purple;
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.formulario div button:hover {
+	background-color: #450745;
+}
