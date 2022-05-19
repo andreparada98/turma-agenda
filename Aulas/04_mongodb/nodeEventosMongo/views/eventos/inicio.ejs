@@ -13,39 +13,42 @@
 </head>
 
 <body>
-	<header>
-		<h1>Eventos</h1>
-		<p>Seja bem vindo, <%= usuarioSession.nome
-				%>
-		</p>
+	<header id="header">
+		<div class="container">
+			<h1>Eventos - Lista</h1>
+			<p>
+				<%=usuarioSession.nome%>
+			</p>
 
-		<nav>
-			<ul>
-				<li>
-					<a href="/inicio">
-						Lista de Eventos
-					</a>
-				</li>
-				<li>
-					<a href="/cadastroEvento">
-						Cadastro de Evento
-					</a>
-				</li>
-				<li>
-					<a href="/usuarios">
-						Lista de Usuários
-					</a>
-				</li>
-				<li>
-					<a href="/cadastroUsuario">
-						Cadastro de Usuário
-					</a>
-				</li>
-				<li>
-					<a href="/logout">Sair</a>
-				</li>
-			</ul>
-		</nav>
+			<nav>
+				<ul>
+					<li>
+						<a href="/inicio"
+						   class="active">
+							Lista de Eventos
+						</a>
+					</li>
+					<li>
+						<a href="/cadastroEvento">
+							Cadastro de Evento
+						</a>
+					</li>
+					<li>
+						<a href="/usuarios">
+							Lista de Usuários
+						</a>
+					</li>
+					<li>
+						<a href="/cadastroUsuario">
+							Cadastro de Usuário
+						</a>
+					</li>
+					<li>
+						<a href="/logout">Sair</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 	<section id="container">
 		<table>
