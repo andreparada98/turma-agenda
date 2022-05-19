@@ -59,29 +59,41 @@
 		<form action="/cadastrarUsuario"
 			  method="post"
 			  class="formulario">
-			<div>
-				<label for="nomeUsuario">Nome</label>
-				<input type="text"
-					   id="nomeUsuario"
-					   required="required"
-					   autocomplete="off"
-					   name="usuario[nome]" />
+			<div class="row">
+				<div class="col-6">
+					<label for="nomeUsuario">Nome</label>
+					<input type="text"
+						   id="nomeUsuario"
+						   required="required"
+						   autocomplete="off"
+						   name="usuario[nome]" />
+				</div>
+				<div class="col-6">
+					<label for="emailUsuario">E-mail</label>
+					<input type="email"
+						   id="emailUsuario"
+						   required="required"
+						   autocomplete="off"
+						   name="usuario[email]" />
+				</div>
 			</div>
-			<div>
-				<label for="senhaUsuario">Senha</label>
-				<input type="password"
-					   id="senhaUsuario"
-					   required="required"
-					   autocomplete="new-password"
-					   name="usuario[senha]" />
-			</div>
-			<div>
-				<label for="confirmarSenhaLogin">Confirmar Senha</label>
-				<input type="password"
-					   id="confirmarSenhaLogin"
-					   required="required"
-					   autocomplete="new-password"
-					   name="usuario[confirmarSenha]" />
+			<div class="row">
+				<div class="col-6">
+					<label for="senhaUsuario">Senha</label>
+					<input type="password"
+						   id="senhaUsuario"
+						   required="required"
+						   autocomplete="new-password"
+						   name="usuario[senha]" />
+				</div>
+				<div class="col-6">
+					<label for="confirmarSenhaLogin">Confirmar Senha</label>
+					<input type="password"
+						   id="confirmarSenhaLogin"
+						   required="required"
+						   autocomplete="new-password"
+						   name="usuario[confirmarSenha]" />
+				</div>
 			</div>
 			<div>
 				<button type="submit">Cadastrar Usuário</button>

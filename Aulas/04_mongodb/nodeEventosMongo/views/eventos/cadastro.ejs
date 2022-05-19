@@ -59,26 +59,28 @@
 		<form action="/cadastrarEvento"
 			  method="post"
 			  class="formulario">
-			<div>
-				<label for="descricaoEvento">Descrição</label>
-				<input type="text"
-					   id="descricaoEvento"
-					   required="required"
-					   name="evento[descricao]" />
-			</div>
-			<div>
-				<label for="dataEvento">Data</label>
-				<input type="text"
-					   id="dataEvento"
-					   required="required"
-					   name="evento[data]" />
-			</div>
-			<div>
-				<label for="precoEvento">Preço</label>
-				<input type="text"
-					   id="precoEvento"
-					   required="required"
-					   name="evento[preco]" />
+			<div class="row">
+				<div class="col-6">
+					<label for="descricaoEvento">Descrição</label>
+					<input type="text"
+						   id="descricaoEvento"
+						   required="required"
+						   name="evento[descricao]" />
+				</div>
+				<div class="col-3">
+					<label for="dataEvento">Data</label>
+					<input type="text"
+						   id="dataEvento"
+						   required="required"
+						   name="evento[data]" />
+				</div>
+				<div class="col-3">
+					<label for="precoEvento">Preço</label>
+					<input type="text"
+						   id="precoEvento"
+						   required="required"
+						   name="evento[preco]" />
+				</div>
 			</div>
 			<div>
 				<button type="submit">Cadastrar Evento</button>
