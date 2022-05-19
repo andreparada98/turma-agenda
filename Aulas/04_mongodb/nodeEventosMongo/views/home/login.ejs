@@ -13,31 +13,35 @@
 </head>
 
 <body>
-	<section id="inicio">
-		<h1>Gerenciamento de Eventos</h1>
-		<form action="/login"
-			  method="post"
-			  class="formulario">
-			<div>
-				<label for="nomeLogin">Nome</label>
-				<input type="text"
-					   id="nomeLogin"
-					   required="required"
-					   autocomplete="name"
-					   name="usuario[nome]" />
-			</div>
-			<div>
-				<label for="senhaLogin">Senha</label>
-				<input type="password"
-					   id="senhaLogin"
-					   required="required"
-					   autocomplete="new-password"
-					   name="usuario[senha]" />
-			</div>
-			<div>
-				<button type="submit">Login</button>
-			</div>
-		</form>
+	<section id="login">
+		<div class="container">
+			<h1>Gerenciamento de Eventos</h1>
+			<form action="/login"
+				  method="post"
+				  class="formulario">
+				<div>
+					<label for="nomeLogin">Nome</label>
+					<input type="text"
+						   class="iconBG"
+						   id="nomeLogin"
+						   required="required"
+						   autocomplete="off"
+						   name="usuario[nome]" />
+				</div>
+				<div>
+					<label for="senhaLogin">Senha</label>
+					<input type="password"
+						   class="iconBG"
+						   id="senhaLogin"
+						   required="required"
+						   autocomplete="new-password"
+						   name="usuario[senha]" />
+				</div>
+				<div>
+					<button type="submit">Login</button>
+				</div>
+			</form>
+		</div>
 	</section>
 </body>
 
