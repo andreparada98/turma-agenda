@@ -7,7 +7,7 @@
 		  content="IE=edge">
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1.0">
-	<title>Eventos :: Página Inicial</title>
+	<title>Document</title>
 </head>
 
 <body>
@@ -45,26 +45,37 @@
 			</ul>
 		</nav>
 	</header>
-	<section id="container">
-		<table>
-			<tr>
-				<th>
-					Descrição
-				</th>
-				<th>
-					Data
-				</th>
-				<th>
-					Valor
-				</th>
-			</tr>
-			<tr>
-				<td>teste</td>
-				<td>xx/xx/xxxx</td>
-				<td>R$ xx,xx</td>
-			</tr>
-		</table>
-	</section>
+
+	<main>
+		<form action="/cadastrarEvento"
+			  method="post"
+			  class="formulario">
+			<div>
+				<label for="descricaoEvento">Descrição</label>
+				<input type="text"
+					   id="descricaoEvento"
+					   required="required"
+					   name="evento[descricao]" />
+			</div>
+			<div>
+				<label for="dataEvento">Data</label>
+				<input type="text"
+					   id="dataEvento"
+					   required="required"
+					   name="evento[data]" />
+			</div>
+			<div>
+				<label for="precoEvento">Preço</label>
+				<input type="text"
+					   id="precoEvento"
+					   required="required"
+					   name="evento[preco]" />
+			</div>
+			<div>
+				<button type="submit">Cadastrar Evento</button>
+			</div>
+		</form>
+	</main>
 </body>
 
 </html>

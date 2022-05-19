@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		  content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<header>
+		<h1>Eventos</h1>
+		<p>Seja bem vindo, <%= usuarioSession.nome
+				%>
+		</p>
+
+		<nav>
+			<ul>
+				<li>
+					<a href="/inicio">
+						Lista de Eventos
+					</a>
+				</li>
+				<li>
+					<a href="/cadastroEvento">
+						Cadastro de Evento
+					</a>
+				</li>
+				<li>
+					<a href="/usuarios">
+						Lista de Usuários
+					</a>
+				</li>
+				<li>
+					<a href="/cadastroUsuario">
+						Cadastro de Usuário
+					</a>
+				</li>
+				<li>
+					<a href="/logout">Sair</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<form action="/cadastrarUsuario"
+			  method="post"
+			  class="formulario">
+			<div>
+				<label for="nomeLogin">Nome</label>
+				<input type="text"
+					   id="nomeLogin"
+					   required="required"
+					   autocomplete="name"
+					   name="usuario[nome]" />
+			</div>
+			<div>
+				<label for="senhaLogin">Senha</label>
+				<input type="password"
+					   id="senhaLogin"
+					   required="required"
+					   autocomplete="new-password"
+					   name="usuario[senha]" />
+			</div>
+			<div>
+				<label for="confirmarSenhaLogin">Confirmar Senha</label>
+				<input type="password"
+					   id="confirmarSenhaLogin"
+					   required="required"
+					   autocomplete="new-password"
+					   name="usuario[confirmarSenha]" />
+			</div>
+			<div>
+				<button type="submit">Cadastrar Usuário</button>
+			</div>
+		</form>
+	</main>
+</body>
+
+</html>
