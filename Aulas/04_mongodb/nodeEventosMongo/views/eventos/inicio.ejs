@@ -73,7 +73,7 @@
 						<%=evento.descricao%>
 					</td>
 					<td>
-						<%=evento.data%>
+						<%=moment(evento.data).utc().format("DD /MM/yyyy")%>
 					</td>
 					<td>R$ <%=evento.preco%>
 					</td>

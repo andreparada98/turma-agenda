@@ -1,4 +1,6 @@
 module.exports = function (app) {
+	var moment = require('moment');
+	moment.locale('pt-br');
 	var Evento = app.models.eventos;
 
 	var EventosController = {
@@ -16,7 +18,8 @@ module.exports = function (app) {
 
 				var params = {
 					usuarioSession: request.session.usuarioSession,
-					listaEventos: eventos
+					listaEventos: eventos,
+					moment
 				};
 
 				response.render('eventos/inicio', params);
