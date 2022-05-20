@@ -1,0 +1,19 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "descricao": "Bola Vôlei",
+      "preco": 30
+    },
+    {
+      "id": 2,
+      "descricao": "Bola Futebol",
+      "preco": 25
+    },
+    {
+      "descricao": "Bola Baisebol",
+      "preco": "70",
+      "id": 3
+    }
+  ]
+}
