@@ -1,0 +1,54 @@
+Conteudo aula 3:
+
+Começando com MongoDB:
+
+- Vamos copiar todas as pastas e arquivos EXCETO a pasta 'node_modules' da pasta 'nodeEventos'
+- Vamos criar uma nova pasta '04_mongodb'
+- Dentro da nova pasta criaremos 'nodeEventosMongo'
+- Os arquivos que foram copiados serão colocados para dentro dela
+- Por ultimo, vamos no terminal dentro da pasta 'nodeEventosMongo' e vamos executar o comando: $ npm i (o comando instalará as dependencia da aplicação)
+- Para rodar basta executar o comando: $ nodemon app
+
+Para testar se o Mongo foi instalado corretamente, no terminal executaremos o comando:
+$ mongo
+
+Caso dê erro, verifique se nas variáveis de ambiente em 'Path' tem o caminho de instalação do do Mongo com a pasta bin - exemplo do meu local de instalação: C:\Program Files\MongoDB\Server\5.0\bin
+
+Caso não tenha, adicione o caminho em 'Path' e feche todas as instâncias de terminal, abra novamente e execute o comando: $ mongo
+
+Outra verificação válida é abrir a opção de 'Serviços' do Windows e verificar se:
+1. MongoDB consta na lista de Serviços
+2. Se o MongoDB está 'em execução'
+
+Caso MongoDB não apareça na lista, ele não está instalado corretamente no Windows.
+
+- Testando comandos mongo no terminal:
+
+Para ver os bancos de dados existentes:
+$ show dbs
+
+Para acessar um banco de dados ou criar um novo banco de dados:
+$ use turmaAgenda
+- 'turmaAgenda' é o nome do bando de dados
+
+Para criar novos registros:
+$ db.usuarios.insert({​​​​​​ nome: "Mariana", email: "mariana@impacta.com", senha: "123456"}​​​​​​)
+- declaramos o nome da collection que queremos criar/acessar (no caso é 'usuarios') e usamos o comando de 'insert' com um objeto dentro de parenteses enviando os dados que queremos salvar
+
+Para ver as coleções existentes:
+$ show collections
+
+Para listar registros de coleções:
+$ db.usuarios.find()
+
+Para listar registros de coleções com dados linha a linha:
+$ db.usuarios.find().pretty()
+
+
+******************************************************************
+
+Continuação Aula 4:
+
+Vamos utilizar o mongoose para trablhar com o mongo no node
+Para instalar usamos o comando:
+$ npm i mongoose --save
