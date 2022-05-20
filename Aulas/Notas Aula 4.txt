@@ -52,3 +52,46 @@ Continuação Aula 4:
 Vamos utilizar o mongoose para trablhar com o mongo no node
 Para instalar usamos o comando:
 $ npm i mongoose --save
+
+******************************************************************
+
+Webservice Mockado
+
+Usaremos o json-server para usar e simular um Webservice
+- Para instalar, executamos o comando:
+$ npm i json-server -g
+
+- Para fazer funcionar, vamos criar o arquivo 'db.json' e dentro dele colocaremos uma estrutura de objeto (arquivo criado em nova pasta '05_webservice_mock)
+Estrutura arquivo:
+{
+    "produtos": [
+        {
+            "id": 1,
+            "descricao": "Bola Vôlei",
+            "preco": 30
+        },
+        {
+            "id": 2,
+            "descricao": "Bola Futebol",
+            "preco": 25
+        }
+    ]
+}
+
+- Para testar, rodar o comando abaixo na pasta 05_webservice_mock
+$ json-server db.json
+
+- Para abrir, rodar no navegador: http://localhost:3000/produtos
+
+
+******************************************************************
+
+Promise
+
+Vamos criar a pasta 06_promise para trabalhar com chamadas assincrona,
+- Executamos o código pra iniciar o projeto de 'node' (gerar o package.json)
+$ npm init -y
+
+- E com isso instalaremos o node-fetch
+$ npm i node-fetch --save
+
