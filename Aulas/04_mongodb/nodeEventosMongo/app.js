@@ -5,10 +5,29 @@ var load = require('express-load');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
+var mongoose = require('mongoose');
 
 // app será nossa instancia e aplicação de express
 app = express();
 // Essa variável executará o que significa o próprio módulo do express, e então configuraremos a nossa aplicação
+
+// Vamos utilizar a variável 'global' do node e criar uma string de conexão que definirá a estrutura e as informações do banco de dados pra conexão
+global.db = mongoose.connect('mongodb://localhost:27017/turmaAgenda');
+// caso ocorra erro, use o IP 127.0.0.1
+
+// Vamos colocar uns eventos para ver na 'tela' possíveis retornos da conexão - não é obrigatório
+// Eventos de monitoramento do banco de dados
+mongoose.connection.on('connected', function () {
+	console.log('Conexão estabelecida!');
+});
+
+mongoose.connection.on('error', function (err) {
+	console.log('Erro: ' + err);
+});
+
+mongoose.connection.on('disconnected', function () {
+	console.log('Conexão finalizada');
+});
 
 app.set('views', __dirname + '/views');
 // Existe uma constante do express chamada 'views', nós não inventamos esse nome

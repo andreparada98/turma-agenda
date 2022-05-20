@@ -3,6 +3,8 @@ module.exports = function (app) {
 	// criamos um objeto aonde podemos ter 'N' actions (funções/propriedades) no objeto, que será o 'HomeController'
 	// criamos as action's dentro do objeto pensando nas possiveis entradas e saidas que teremos de respostas das solicitações
 
+	var Usuario = app.models.usuarios;
+
 	var HomeController = {
 		// action - toda estrutura tem a 'function' com request e response
 		index: function (request, response) {
@@ -13,19 +15,22 @@ module.exports = function (app) {
 		login: function (request, response) {
 			// obter as informações dos campos de entrada
 			// request para pegar os dados do bodyParser
-			var nome = request.body.usuario.nome;
-			var senha = request.body.usuario.senha;
+			var usuario = request.body.usuario;
+			// o usuario declarado acima é baseado nos dados de formulário da tela de login, não tem a ver com o Schema dos dados do usuário
 
-			// simulação de login
-			if (nome == 'admin' && senha == 'admin') {
-				// caso o login tenha sucesso, vamos armazenar as informações do usuário
-				request.session.usuarioSession = request.body.usuario;
-				// request.session cria uma sessão, no caso o nome da nossa sessão é 'usuarioSession' e armazena nela um valor, o caso o objeto inteiro do usuario
-				response.redirect('inicio');
-			} else {
-				// response.redirect ele redireciona encaminhando um 'processamento' pra uma rota
-				response.redirect('/');
-			}
+			// o método 'findOne' busca baseado no objeto passado dados que batam com os critérios de informação. Caso seja encontrado mais que um, ele trará o primeiro dado encontrado na ordem natural dos dados
+			Usuario.findOne(usuario).exec(function (erro, itemEncontrado) {
+				if (erro) {
+					console.error("Erro: " + erro);
+					response.redirect('/');
+				} else {
+					// em caso de sucesso, o 'itemEncontrado' são os dados do usuário registrados no banco
+					console.log(itemEncontrado);
+					request.session.usuarioSession = itemEncontrado;
+					response.redirect('inicio');
+				}
+			});
+
 		},
 		logout: function (request, response) {
 			// precisamos destruir a sessão para não armazenar mais as informações do usuário

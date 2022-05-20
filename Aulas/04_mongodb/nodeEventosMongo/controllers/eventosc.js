@@ -1,10 +1,26 @@
 module.exports = function (app) {
+	var Evento = app.models.eventos;
+
 	var EventosController = {
 		inicio: function (request, response) {
-			// antes de mandar renderizar, vamos pegar a informação do usuário da sessão e armazenar em um objeto que será passado para a renderização
-			var params = { usuarioSession: request.session.usuarioSession };
+			Evento.find(function (erro, eventosEncontrados) {
+				var eventos;
 
-			response.render('eventos/inicio', params);
+				if (erro) {
+					eventos = [];
+					console.error('Erro: ' + erro);
+				} else {
+					eventos = eventosEncontrados;
+					console.log(eventos);
+				}
+
+				var params = {
+					usuarioSession: request.session.usuarioSession,
+					listaEventos: eventos
+				};
+
+				response.render('eventos/inicio', params);
+			});
 		},
 		cadastroEvento: function (request, response) {
 			var params = { usuarioSession: request.session.usuarioSession };
@@ -13,6 +29,20 @@ module.exports = function (app) {
 		},
 		cadastrarEvento: function (request, response) {
 			var evento = request.body.evento;
+
+			if (evento.descricao.trim().length == 0) {
+				response.redirect('/cadastroEvento');
+			} else {
+				Evento.create(evento, function (erro, itemCriado) {
+					if (erro) {
+						console.error("Erro: " + erro);
+						response.redirect('/cadastroEvento');
+					} else {
+						console.log("Evento criado: " + itemCriado);
+						response.redirect('/inicio');
+					}
+				});
+			}
 		}
 	};
 

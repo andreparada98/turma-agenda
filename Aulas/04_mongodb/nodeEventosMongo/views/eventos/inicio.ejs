@@ -67,11 +67,18 @@
 					Valor
 				</th>
 			</tr>
-			<tr>
-				<td>teste</td>
-				<td>xx/xx/xxxx</td>
-				<td>R$ xx,xx</td>
-			</tr>
+			<% listaEventos.forEach(function(evento,index){%>
+				<tr>
+					<td>
+						<%=evento.descricao%>
+					</td>
+					<td>
+						<%=evento.data%>
+					</td>
+					<td>R$ <%=evento.preco%>
+					</td>
+				</tr>
+				<%})%>
 		</table>
 	</main>
 </body>
