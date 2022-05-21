@@ -1,0 +1,77 @@
+Vamos criar nosso webservice:
+
+$ express apiEventos --view=ejs
+
+O próprio comando recomenda seguir os seguintes passos:
+
+$ cd apiEventos
+
+Ao invés de rodar direto o 'npm install' como sugerido, vamos instalar algumas dependencias antes e depois rodamos o 'npm i'
+
+Dependencias:
+-> body-parser
+-> express-load
+-> mongoose
+
+$ npm i body-parser express-load mongoose --save
+
+E na sequencia rodamos o 'npm i' para garantir todas as dependencias instaladas
+
+$ npm i
+
+Para garantir resolução de problemas de vulnerabilidades, executamos também:
+
+$ npm audit fix --force
+
+Vamos criar a pasta 'models' dentro da pasta apiEventos e vamos copiar os models de 'usuarios' e 'eventos' para dentro dela
+
+******************************************************************
+
+Configuração de CORS para nosso webservice:
+
+-> Instalar módulo 'cors' no projeto (dentro da pasta apiEventos)
+$ npm i cors --save
+
+-> Referenciar o CORS - no arquivo app.js
+var cors = require('cors')
+
+-> Vamos falar pra aplicação usar o cors
+app.use(cors())
+
+-> Vamos definir a função pra 'validar' (como filtro) o cors
+app.use(function(request, response, next){ })
+
+******************************************************************
+
+AngularJS
+
+Site: http://angularjs.org
+
+Link CDN: https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js
+
+-> ng-app: fala para o código/página que esse arquivo (HTML) será uma página AngularJS
+-> ng-model: ao usar em campos de formulário (no caso o input) nós não colocamos 'value' e o 'ng-model' tem como o valor uma 'menção' ao campo que será refletido seu valor
+-> {{ }}: as chaves são chamadas de 'bind' que atualiza o valor conforme as alterações no input
+
+******************************************************************
+
+Angular
+
+Para instalar o Angular, instalamos o Angular CLI (Commando Line Interface)
+$ npm i @angular/cli -g
+
+Para ver a versão do angular:
+$ ng --version
+
+Para criar um novo projeto:
+$ ng new app-conceitos
+
+Quando executamos o comando, 2 perguntas aparecem:
+- Criar rotas? não
+- Estilo de CSS
+
+Temos que entrar na pasta do projeto:
+$ cd app-conceitos
+
+Para rodar o projeto:
+$ ng serve
