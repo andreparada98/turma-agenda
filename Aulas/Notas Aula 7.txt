@@ -1,0 +1,67 @@
+Lifecycle Hookes: https://angular.io/guide/lifecycle-hooks#lifecycle-event-sequence
+
+
+******************************************************************
+
+Gerando componente com 'ng generate'
+
+$ ng generate component components/property-binding
+
+$ ng generate component components/event-binding
+
+
+Binding -> {{variavel}}: também chamamos de interpolação (component -> view). Obs: O uso se faz como um valor de exibição da tag de HTML. Exemplos:
+- <p>{{variavel}}</p>
+- <h1>{{variavel}}</h1>
+- <div>{{variavel}}</div>
+- <a>{{variavel}}</a>
+
+Site: https://angular.io/guide/property-binding
+Property Binding -> [atributo]="": é uma forma de monitorar com o Angular propriedades de um elemento HTML (component -> view). Obs: O uso se faz no atributo/propridade da tag de HTML. Exemplos:
+- <input [value]="rnd" />
+- <img [src]="image" />
+
+Site: https://angular.io/guide/event-binding
+Event Binding -> (evento)="funcao()": é a forma como o usuário interage na tela (view) e o site vai compreender para executar algo (view -> component). Exemplos:
+- <button (click)="alterarTexto()">Alterar Texto</button>
+-- No component.ts tem a função 'alterarTexto'
+
+******************************************************************
+
+Interfaces
+
+Uma interface é um arquivo de definição - variáveis/objetos/propriedades ou de funções
+Quando determinamos o funcionamento de uma função, por exemplo, podemos desenhar a estrutura dela. Exemplo:
+export interface Funcoes{
+    calcularMetroQuadrado(largura: number, altura: number): number
+    calcularIMC(peso: number, altura: number): number
+}
+Quando desenhamos uma tipagem de dados, podemos (e devemos) criar uma interface desses dados. Exemplo:
+export interface Evento{
+    descricao: string;
+    data: Date;
+    preco: number;
+}
+
+******************************************************************
+
+Service
+
+Uma Service (ou serviço) é um repositório de informações ou de configurações que recebida/declarada no constructor, onde 'aquilo' servirá para algo, tratando uma informação ou fazendo uma forma de tratar padronizado um comportamento.
+O serviço é declarado no constructor para que quando o componente for criado, ele esteja pronto para receber e lida (seja de qual forma for) com os dados e configurações vinda da service.
+Uma service não interage com o usuário. É um controle totalmente do sistema.
+
+Vamos criar um serviço para simular uma chamada de API.
+
+$ ng generate service services/topicos
+
+Site: https://angular.io/api/core/Injectable
+
+******************************************************************
+
+Criando nosso projeto Angular de Eventos
+
+1. Sair da pasta 'app-conceitos'
+$ cd ..
+2. Executar comando pra gerar o projeto Angular
+$ ng new app-eventos --routing=true --style=scss --skip-tests=true

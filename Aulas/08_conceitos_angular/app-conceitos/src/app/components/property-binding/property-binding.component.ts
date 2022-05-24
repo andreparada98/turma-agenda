@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-property-binding',
-  templateUrl: './property-binding.component.html',
-  styleUrls: ['./property-binding.component.scss']
+	selector: 'app-property-binding',
+	templateUrl: './property-binding.component.html',
+	styleUrls: ['./property-binding.component.scss']
 })
-export class PropertyBindingComponent implements OnInit {
+export class PropertyBindingComponent {
+	// Exemplo de Property Binding
+	// um tipo de binding unidirecional (component -> view)
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+	rnd: number = Math.random();
+	image = "http://lorempixel.com.br/400/200";
+	// 400 é a largura
+	// 200 é a altura
 
 }
