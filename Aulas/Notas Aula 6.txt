@@ -1,0 +1,218 @@
+Pré-processador SASS/SCSS
+
+Site: https://sass-lang.com/
+
+-> CSS padrão
+.container{
+    background-color: green;
+}
+.container h1{
+    color: blue;
+}
+.container section{
+    background-color: green;
+
+}
+.container section p{
+
+}
+
+-> scss
+$primary-color: green;
+$primary-color-text: blue;
+
+.container{
+
+    h1{
+
+    }
+
+    section{
+
+
+        p{
+
+        }
+
+    }
+}
+
+******************************************************************
+
+Markdown Language
+
+Site: https://www.markdownguide.org/getting-started/
+Dillinger: https://dillinger.io/
+
+******************************************************************
+
+i18n - internationalization
+
+A internacionalização é a forma de configurar um site ou sitema multi-linguas, e assim o conteudo pode ser criado como um dicionario de dados em arquivos ou ate mesmo em banco de dados.
+
+Módulo NPM: https://www.npmjs.com/package/i18n (angular não precisa)
+Angular: https://angular.io/guide/i18n-overview
+
+******************************************************************
+
+Angular - Ciclo de vida
+
+Na estrutura de arquivos quando rodamos o 'ng new' temos arquivos importantes pensando na execução do Angular para carregar o projeto.
+
+O arquivo mais importante de todos é o 'angular.json', esse é o arquivo com as configurações gerais da aplicação, regras e etc, e apesar de já vir algumas configurações, podemos com dependendo da necessidade ou crescimento/evolução do projeto mudar esse arquivo.
+
+-> Pontos importantes para estudar (baseado no angular.json):
+- Configurações (projects > app-conceitos > architect > build/projects > app-conceitos > architect > serve)
+- Options de arquitetura (projects > app-conceitos > architect > build > options)
+- fileReplacements (para configurações de ambientes)
+
+Além dele, temos mais DOIS arquivos muito importantes - que inclusive estão declarados no angular.json - que são o 'index' e 'main' (projects > app-conceitos > architect > build > options)
+- O 'index' se trata do arquivo HTML que será apresentado e carregado como SPA (index.html)
+- O 'main' é o arquivo de typescript que carregará todas as dependencias e estrutura do projeto para chegar até a parte visual e carregar o '<app-root>' do arquivo de HTML
+
+O arquivo de HTML é de fato o 'único' arquivo que temos como arquivo lido na tela, pois todos os outros serão componentes compreendidos e carregados nessa tela/arquivo de index.html
+
+No arquivo de main.ts temos uma validação de ambiente de produção para 'desabilitar' algumas coisas de ambiente de desenvolvimento, garantindo o carregamento somente do necessário
+O 'bootstrapModule' é o que vai carregar o módulo de inicialização da aplicação, que é o AppModule. O bootstrapModule chama para inicializar a aplicação e caso dê erro tem um 'catch' para exibir o possivel erro
+
+No arquivo de módulo (AppModule) declaramos a tipagem dele com o '@NgModule' que tem definições dentro dele do que ele precisa para existir e carregar corretamente
+As 'declarations' são declarações de componentes necessários para existir OU que tenham no projeto
+Os imports são dependencias para o projeto carregar para funcionalidade do módulo
+Providers funcionam com dependencias também, porém com base em serviços (services)
+O bootstrap define qual será o componente a ser iniciado baseado no carregamento do módulo
+
+Ao entrarmos no componente (AppComponent) temos a definição do componente pelo '@Component' e ele tem 3 definições nele: selector, templateUrl e styleUrls
+O 'selector' define a "tag de HTML" que será carregada/colocada no código para mostrar o componente
+O templateUrl é o arquivo de HTML para carregar na tela
+O styleUrls são os arquivos de SCSS (ou CSS...) que vão carregar somente naquele componente
+
+Módulos, Componentes e Service são todos classes, e todos tem uma definição no começo do arquivo, que é o que os define como são e para o que servem
+
+app.module.ts
+@NgModule({ })
+export class AppModule { }
+
+app.component.ts
+@Component({ })
+export class AppComponent { }
+
+app.service.ts
+@Injectable({ })
+export class AppService { }
+
+O @ das definições nós chamamos de Decorators
+
+https://angular.io/guide/ngmodules
+Módulo: é o elemento que reúne os demais elementos da aplicação (no caso os componentes). Todos os elementos da aplicação devem ser registrados no módulo.
+
+app.module.ts
+@NgModule({
+	declarations: [], // aqui referenciamos todos os componentes que são relacionados à esse módulo
+	imports: [], // todos os módulos do projeto (podem ser de terceiros) ou que usamos para funcionar o módulo como esperado
+	providers: [], // todos os serviços (services) que o módulo precisa OU os componentes precisam
+	bootstrap: [], // o componente inicial daquele módulo
+	exports: [] // quando temos mais de 1 módulo na aplicação, utilizamos o exports pra compartilhar componentes com outros módulos - por exemplo usando um módulo shared
+})
+export class AppModule { }
+
+https://angular.io/api/core/Component
+Componente: é o elemento responsável por renderizar a view e informações na tela para o usuário
+
+app.component.ts
+@Component({
+	selector: 'app-exemplo', // o selector significa a tag de HTML que será colocada/lida na tela para acessar o componente - na criação do componente, a sua existencia se dá por na prática não só desenvolver o componente, mas essa definição que permitirá o carregamento dele para interpretar tudo na tela
+	template: '<h1>Hello World</h1>',
+	templateUrl: 'caminho_arquivo.html' // somente UMA opção de template pode ser usada, OU escolhe colocar o código HTML com a opção 'template' chamando direto no arquivo de typescript OU criamos um arquivo HTML e referenciamos no 'templateUrl' - NUNCA usamos os dois
+	styles/styleUrls: '' // assim como o exemplo acima, em styles usamos o CSS direto e styleUrls colocamos uma lista (array) de caminhos de arquivos de CSS - NUNCA usamos os dois
+})
+export class AppComponent { }
+
+******************************************************************
+
+Organizando o projeto e instalando módulos
+
+Vamos instalar o bootstrap no projeto
+$ npm i bootstrap --save
+
+Caso quisessem instalar uma versão específica:
+$ npm i bootstrap@3.3.7 --save
+
+Ng-bootstrap: https://ng-bootstrap.github.io/#/home
+Ngx-bootstrap: https://valor-software.com/ngx-bootstrap/#/
+
+No arquivo styles.scss colocamos via import o bootstrap - usar 1 das 2 opções abaixo
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/scss/bootstrap.scss";
+
+E criamos uma pasta de scss na pasta assets com 1 arquivo index.scss e 1 variables.scss
+- index.scss
+@import "./variables";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $primary-color;
+    color: $primary-color-text;
+}
+
+div {
+    background-color: $secondary-color;
+    color: $secondary-color-text;
+
+    div {
+        background-color: $primary-color;
+        color: $primary-color-text;
+    }
+}
+
+- variables.scss
+$primary-color: blue;
+$primary-color-text: white;
+
+$secondary-color: red;
+$secondary-color-text: black;
+
+Importamos o index.scss no styles.scss
+
+@import "./assets/scss/index";
+
+******************************************************************
+
+Criando componente na mão
+
+- Criamos pasta 'components' dentro da pasta 'app' do projeto
+1. Criamos pasta do componente 'app-exemplo'
+2. Criamos arquivo HTML 'app-exemplo.component.html'
+3. Criamos arquivo typescript 'app-exemplo.component.ts'
+3.1 Criar a classe e exportar: export class AppExemplo{}
+3.2 Declarar o import do Decorator: import { Component } from '@angular/core'
+3.3 Escrever o Decorator: @Component({})
+3.4 Colocar as configurações de selector, templateUrl e styleUrls:
+    selector: 'app-exemplo',
+    templateUrl: './app-exemplo.component.html',
+    stylesUrls: ['./app-exemplo.component.scss']
+4. Criamos arquivo css 'app-exemplo.component.css'
+5. Declarar/Registrar o component como 'declarations' no módulo + import
+
+- Escrever o HTML para testar
+
+-> https://angular.io/cli/generate
+Para facilitar, usamos o comando
+$ ng generate <tipo> <pasta/nome_arquivo>
+
+O que podemos criar com ng generate: class, component, module, pipe, service, interface, ...
+
+******************************************************************
+
+Diretiva Estrutural
+
+Uma diretiva estrutural é um 'atributo' em uma tag de HTML que começa com * (asterisco) e que determina/cria/condiciona a estrutura da página exibida
+Exemplos:
+-> *ngFor: que cria elementos dinamicos na tela conforme a existencia de itens (laço de repetição)
+-> *ngIf: condicional de exibição ou ocultação na tela
+
+

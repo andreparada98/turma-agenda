@@ -68,10 +68,11 @@ $ ng new app-conceitos
 
 Quando executamos o comando, 2 perguntas aparecem:
 - Criar rotas? não
-- Estilo de CSS
+- Estilo de CSS (CSS, SCSS, SASS, LESS)
 
 Temos que entrar na pasta do projeto:
 $ cd app-conceitos
 
 Para rodar o projeto:
-$ ng serve
+$ ng serve -o
+(Com o '-o' ele já abre no navegador direto)
