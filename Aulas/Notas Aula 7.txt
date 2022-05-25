@@ -63,5 +63,92 @@ Criando nosso projeto Angular de Eventos
 
 1. Sair da pasta 'app-conceitos'
 $ cd ..
+
 2. Executar comando pra gerar o projeto Angular
 $ ng new app-eventos --routing=true --style=scss --skip-tests=true
+--routing=true: configura o projeto com o módulo de rotas
+--style=scss: configura o projeto com o estilo de SCSS para CSS
+--skip-tests=true: configura o projeto para não gerar arquivos de testes
+
+3. Entrar na pasta do projeto
+$ cd app-eventos
+
+4. Instalação de ngx-bootstrap e o bootstrap no projeto e utilizaremos uma estrutura de menu exemplo: https://getbootstrap.com/docs/4.3/components/navbar/
+$ npm i ngx-bootstrap bootstrap --save
+
+5. Colocar arquivo de bootstrap no arquivo styles.scss
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+6. Vamos criar um módulo 'shared' para o projeto
+$ ng generate module components/shared
+
+7. Criar o componente de menu para o módulo de shared
+$ ng generate component components/shared/menu
+
+8. Vamos adicionar no AppModule em imports o SharedModule (para permitir que a aplicação use os componentes compartilhados) e o BrowserAnimationsModule (para ajudar na questão de animações que usaremos do próprio bootstrap)
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+-> import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+-> import { SharedModule } from './components/shared/shared.module';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    AppRoutingModule,
+->     BrowserAnimationsModule,
+    BrowserModule,
+->     SharedModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+9. Vamos exportar o menu no SharedModule para ser acessivel na aplicação
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MenuComponent } from './menu/menu.component';
+
+@NgModule({
+  declarations: [
+    MenuComponent
+  ],
+  imports: [
+    CommonModule
+  ],
+->  exports: [
+->    MenuComponent
+->  ]
+})
+export class SharedModule { }
+
+10. Vamos usar a estrutura modelo de menu exemplo do bootstrap (arquivo menu.html)
+
+11. Vamos aplicar 2 módulos do ngx-bootstrap que usaremos: collapse e o dropdown. Colocaremos no imports do SharedModule
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MenuComponent } from './menu/menu.component';
+->import { CollapseModule } from 'ngx-bootstrap/collapse'
+->import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+@NgModule({
+  declarations: [
+    MenuComponent
+  ],
+  imports: [
+    CommonModule,
+->    CollapseModule.forRoot(),
+->    BsDropdownModule.forRoot()
+  ],
+  exports: [
+    MenuComponent
+  ]
+})
+export class SharedModule { }
+
+12. Vamos adicionar a variável/propriedade 'isCollapsed' no component.ts do menu
+isCollapsed: boolean = true;
