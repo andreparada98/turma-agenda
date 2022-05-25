@@ -1,0 +1,71 @@
+<section class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="container-fluid">
+		<!-- Título e botão de collapse -->
+		<div class="navbar-header">
+			<button class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					class="navbar-toggler collapsed"
+					(click)="isCollapsed = !isCollapsed">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand"
+			   [routerLink]="['/']">Impacta Tecnologia</a>
+		</div>
+
+		<!-- Conteúdo do menu -->
+		<div class="collapse navbar-collapse"
+			 [collapse]=isCollapsed>
+			<ul class="nav navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link"
+					   [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown"
+					dropdown>
+					<a dropdownToggle
+					   class="nav-link dropdown-toggle">
+						Eventos <span class="caret"></span>
+					</a>
+					<ul *dropdownMenu
+						class="dropdown-menu"
+						role="menu">
+						<li role="menuitem">
+							<a class="dropdown-item"
+							   [routerLink]="['/eventos']">Lista</a>
+						</li>
+						<li class="divider dropdown-divider"></li>
+						<li role="menuitem">
+							<a class="dropdown-item"
+							   [routerLink]="['/eventos/cadastrar']">Cadastrar</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown"
+					dropdown>
+					<a dropdownToggle
+					   class="nav-link dropdown-toggle">
+						Usuários <span class="caret"></span>
+					</a>
+					<ul *dropdownMenu
+						class="dropdown-menu"
+						role="menu">
+						<li role="menuitem">
+							<a class="dropdown-item"
+							   href="#">Lista</a>
+						</li>
+						<li class="divider dropdown-divider"></li>
+						<li role="menuitem">
+							<a class="dropdown-item"
+							   href="#">Cadastrar</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</section>

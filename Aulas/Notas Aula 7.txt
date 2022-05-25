@@ -152,3 +152,164 @@ export class SharedModule { }
 
 12. Vamos adicionar a variável/propriedade 'isCollapsed' no component.ts do menu
 isCollapsed: boolean = true;
+
+13. No HTML do app.component.html vamos deixar somente:
+<app-menu></app-menu>
+<router-outlet></router-outlet>
+
+Acima já temos um projeto funcional com um menu sendo executado, e agora vamos para novos passos para criar os componentes que serão renderizados na tela por meio de rotas
+
+Páginas:
+- Inicial/Home
+- Lista de Eventos
+- Cadastro de Eventos
+- Não Encontrado (404)
+
+Os comandos que iremos executar, são:
+$ ng generate component components/pages/home
+$ ng generate component components/pages/events/list
+$ ng generate component components/pages/events/create
+$ ng generate component components/pages/not-found
+
+Após criar os componentes, vamos modificar o menu para configurar as rotas que iremos criar. Usamos o 'routerLink' que é um atributo/propriedade que a tag de HTML <a> utilizará no lugar do 'href'
+A escrita por ser uma propridade monitorada, é dentro de []
+-> [routerLink]="['/']"
+-> [routerLink]="['/home']"
+-> [routerLink]="['/eventos/listar']"
+-> [routerLink]="['/eventos/cadastrar']"
+
+Nós configuramos as rotas no app-routing.module.ts na constante que já vem vazia.
+A ordem de rotas para serem criadas vem da primeira sendo a rota '/' vazia de acesso e a última rota é a de 'not found' (que é representada por **).
+As rotas não precisam de '/' no nome delas.
+As duas propriedades no objeto da rota passado são path e component.
+Exemplo:
+const routes: Routes = [
+	{
+		path: "",
+		component: HomeComponent
+	},
+	{
+		path: 'home',
+		component: HomeComponent
+	},
+	{
+		path: "eventos",
+		component: EventsListComponent
+	},
+	{
+		path: "eventos/cadastrar",
+		component: EventCreateComponent
+	},
+	{
+		path: "**",
+		component: NotFoundComponent
+	}
+];
+
+Após configurarmos as rotas, precisamos usar como 'imports' no módulo Shared o RouterModule, para o 'routerLink' funcionar corretamente.
+
+-> import { RouterModule } from '@angular/router';
+@NgModule({
+	declarations: [
+		MenuComponent
+	],
+	imports: [
+		CommonModule,
+		CollapseModule.forRoot(),
+		BsDropdownModule.forRoot(),
+->		RouterModule
+	],
+	exports: [
+		MenuComponent
+	]
+})
+
+Criamos uma tabela para preencher os eventos na lista de eventos
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>
+				Descrição
+			</th>
+			<th>
+				Data
+			</th>
+			<th>
+				Valor
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<%=evento.descricao%>
+			</td>
+			<td>
+				<%=moment(evento.data).utc().format("DD /MM/yyyy")%>
+			</td>
+			<td>R$ <%=evento.preco%>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+Vamos criar um serviço para acessar/usar o webservice (Para isso rodem o apiEventos da pasta 07)
+
+$ ng generate service services/webservice
+
+Para acessar um webservice que vamos criar, precisamos realizar os seguintes passos:
+1. Adicionar o módulo HttpClientModule no arquivo app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+@NgModule({
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		EventsListComponent,
+		EventCreateComponent,
+		NotFoundComponent
+	],
+	imports: [
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		BrowserModule,
+->		HttpClientModule,
+		SharedModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
+})
+
+2. No constructor da service criada, referenciaremos o componente HttpClient
+-> import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class WebserviceService {
+	urlEventos: string = "http://localhost:3200/eventos";
+
+->	constructor(private http: HttpClient) { }
+}
+
+3. Criar uma estrutura para definir os dados de Eventos para utilizar nas chamadas de webservice, isso significa que criaremos uma Interface para representar o objeto de Evento com suas propriedades a ser manipulado
+$ ng generate interface interfaces/evento
+
+export interface Evento {
+	descricao: string;
+	data: string;
+	preco: number;
+}
+
+Após preparar as possibilidades para uso do Http (módulo e constructor), vamos criar a função de pegar eventos
+Declaramos como 'private' o http para disponibilizar o uso desse serviço para a classe WebserviceService, dessa maneira podendo realizar requisições (get, post, put...)
+Para criarmos nosso método para listar eventos, criamos a função do tipo Observable
+Quando pensamos em um webservice e em requisições, pensamos em Promise; e no Angular temos algo que funciona da mesma maneira, mas chamamos de Observable
+Quando criamos a função do tipo Observable, ela automaticamente aguarda um retorno, e o retorno será diretamente a chamada da URL da API que criamos que retornará a listagem de eventos
+O Observable utiliza o modelo da Interface de Evento para aguardar um retorno exato de lista de eventos baseado na definição feita na interface, o que define que será uma lita são os [] na frente da palavra 'Evento'
+Como Observable espera um retorno, declaramos dentro da função o return já chamando fiz http uma requisição get com a URL de Eventos, e esperamos que essa requisição retorne também uma lista de Eventos
+
+Chamamos no constructor da lista o serviço de webservice que criamos para realizar a chamada da URL de get eventos criada com a função do tipo Observable
+Vamos executar a função no ngOnInit que é a inicialização do componente
+Após chamar a função de getEventos criada como Observable, precisamos nos inscrever no Observable pois ele (o Observable) precisa dessa inscrição para retornar o que estamos aguardando
+E então usamos uma arrow function como callback para pegar a resposta da URL (no caso a lista de eventos) e populamos a variável/propriedade eventos do componente com a resposta da requisição

@@ -1,0 +1,30 @@
+<h1>Lista de Eventos</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>
+				Descrição
+			</th>
+			<th>
+				Data
+			</th>
+			<th>
+				Valor
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let evento of eventos">
+			<td>
+				{{evento.descricao}}
+			</td>
+			<td>
+				{{evento.data | date: 'dd/MM/yyyy'}}
+			</td>
+			<td>
+				{{evento.preco | currency: 'BRL'}}
+			</td>
+		</tr>
+	</tbody>
+</table>
