@@ -32,7 +32,7 @@ module.exports = function (app) {
 		// vamos criar a estrutura do objeto de evento baseado nos dados esperados pelo model
 		var evento = {
 			'descricao': request.body.descricao,
-			'data': request.body.data,
+			'data': request.body.data + 'T03:00:00',
 			'preco': request.body.preco
 		};
 
@@ -56,7 +56,7 @@ module.exports = function (app) {
 			} else {
 				// seguir para a atualização do evento manipulando o objeto de evento
 				eventoEncontrado.descricao = request.body.descricao;
-				eventoEncontrado.data = request.body.data;
+				eventoEncontrado.data = request.body.data + 'T03:00:00';
 				eventoEncontrado.preco = request.body.preco;
 
 				eventoEncontrado.save(function (erro, eventoAtualizado) {

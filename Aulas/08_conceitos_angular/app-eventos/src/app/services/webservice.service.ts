@@ -20,4 +20,18 @@ export class WebserviceService {
 	public getEventos(): Observable<Evento[]> {
 		return this.http.get<Evento[]>(this.urlEventos);
 	}
+
+	public getEvento(id: string): Observable<Evento> {
+		const url = `${this.urlEventos}/${id}`
+		return this.http.get<Evento>(url);
+	}
+
+	public postEvento(evento: Evento): Observable<Evento> {
+		return this.http.post<Evento>(this.urlEventos, evento);
+	}
+
+	public putEvento(evento: Evento): Observable<Evento> {
+		const url = `${this.urlEventos}/${evento._id}`
+		return this.http.put<Evento>(url, evento);
+	}
 }

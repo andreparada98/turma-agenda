@@ -1,0 +1,11 @@
+<h1>Evento - {{evento.descricao}}</h1>
+
+<section class="alert alert-info">
+	<p><strong>Código (_id):</strong> {{evento._id}}</p>
+	<p><strong>Descrição:</strong> {{evento.descricao}}</p>
+	<p><strong>Data:</strong> {{evento.data}}</p>
+	<p><strong>Preço:</strong> {{evento.preco}}</p>
+</section>
+
+<a [routerLink]="['/eventos']"
+   class="btn btn-primary">Voltar</a>

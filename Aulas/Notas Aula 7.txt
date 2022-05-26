@@ -1,4 +1,4 @@
-Lifecycle Hookes: https://angular.io/guide/lifecycle-hooks#lifecycle-event-sequence
+Lifecycle Hooks: https://angular.io/guide/lifecycle-hooks#lifecycle-event-sequence
 
 
 ******************************************************************

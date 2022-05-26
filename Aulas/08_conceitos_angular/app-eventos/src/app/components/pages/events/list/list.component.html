@@ -12,6 +12,7 @@
 			<th>
 				Valor
 			</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,6 +25,12 @@
 			</td>
 			<td>
 				{{evento.preco | currency: 'BRL'}}
+			</td>
+			<td>
+				<a class="btn btn-info"
+				   [routerLink]="['/eventos/ver/'+evento._id]">Ver</a>
+				<a class="btn btn-warning"
+				   [routerLink]="['/eventos/editar/'+evento._id]">Editar</a>
 			</td>
 		</tr>
 	</tbody>

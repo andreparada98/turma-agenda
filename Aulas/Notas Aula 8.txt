@@ -1,0 +1,114 @@
+routerLink:
+- é uma propridade específica da tag de HTML <a>
+- somente é usado em camada de visualização (em arquivo HTML)
+
+Para retornarmos para uma tela anterior que foi acessada, usamos o Location do Angular que permite acionar o 'back'
+
+Para manipularmos a navegação de uma rota, utilizamos o Router no component.ts
+
+******************************************************************
+
+Para mexer com formulário vamos precisar usar o Property Binding e o Event Binding.
+No formulário usaremos a Interface de Evento que modelamos a estrutra/definição dos dados que manipularemos
+Usaremos a Interface de Evento para conseguir captar alterações do componente que irão refletir na View (HTML) e também captar as alterações do usuário no HTML
+Para isso vamos usar o two-way data binding, ou como chamamos vinculo bi-direcional
+
+Property Binding => [propridade] (do component.ts para o HTML)
+Event Binding => (evento) (do HTML para o component.ts)
+
+A escrita do vinculo bi-direcional é [()], e o valor que colocamos dentro é um valor pré-definido pelo Angular chamado 'ngModel' -> [(ngModel)]
+
+Para usarmos o ngModel, precisamos incluir no AppModule o FormsModule como imports.
+-> import { FormsModule } from '@angular/forms';
+
+
+******************************************************************
+
+Vamos criar um novo componente para exibir as informações do evento
+
+$ ng generate component components/pages/events/see
+
+Vamos criar a rota para abrir o componente de ver evento (app-routing.module.ts)
+
+{
+    path: "eventos/ver/:id",
+    component: EventsSeeComponent
+}
+
+Pegamos o parametro de ID no component.ts de ver evento com o ActivatedRoute
+
+import { Component, OnInit } from '@angular/core';
+-> import { ActivatedRoute } from '@angular/router';
+
+@Component({
+	selector: 'app-see',
+	templateUrl: './see.component.html',
+	styleUrls: ['./see.component.scss']
+})
+export class EventsSeeComponent implements OnInit {
+
+	constructor(
+-> 		private route: ActivatedRoute
+	) { }
+
+	ngOnInit(): void {
+-> 		const id = this.route.snapshot.params['id'];
+	}
+
+}
+
+Vamos criar o método Observable para pegar o evento via GET
+
+public getEvento(id: string): Observable<Evento> {
+    const url = `${this.urlEventos}/${id}`
+    return this.http.get<Evento>(url);
+}
+
+No component.ts do ver evento, vamos criar a variavel/propridade evento tipado como Evento (e criar ele zerado) e vamos chamar no constructor o webservice
+
+-> evento!: Evento;
+
+constructor(
+    private route: ActivatedRoute,
+->     private webservice: WebserviceService
+) {
+->     this.evento = {
+->         _id: "",
+->         descricao: "",
+->         data: "",
+->         preco: NaN
+->     }
+}
+
+E vamos chamar o método getEvento para popular o dado de Evento
+
+ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+
+->    this.webservice.getEvento(id).subscribe(evento => {
+->        this.evento = evento;
+->    })
+}
+
+Criamos o HTML exibindo via binding as informações
+
+E na listagem de eventos colocamos o routerLink no botão de ver evento
+<a class="btn btn-info" [routerLink]="['/eventos/ver/'+evento._id]">Ver</a>
+
+Comando para criar componente de editar:
+
+$ ng generate component components/pages/events/edit
+
+Vamos usar o moment para formatar a data para exibição no input
+
+- Instalando:
+npm i moment --save
+
+- Importando:
+import * as moment from 'moment';
+
+- Usando:
+this.evento.data = moment(evento.data).format('YYYY-MM-DD')
+
+*** DICA DA API ***
+Para facilitar a tratativa de data no banco de dados, tanto no post quando no put do controller de eventos, podemos colocar "+ 'T03:00:00'" na frente do campo de data, pois a data vai com 'ano-mes-dia' no formato dela
