@@ -27,10 +27,15 @@
 				{{evento.preco | currency: 'BRL'}}
 			</td>
 			<td>
-				<a class="btn btn-info"
+				<a *ngIf="showBtnVer"
+				   class="btn btn-info"
 				   [routerLink]="['/eventos/ver/'+evento._id]">Ver</a>
-				<a class="btn btn-warning"
+				<a *ngIf="showBtnEditar"
+				   class="btn btn-warning"
 				   [routerLink]="['/eventos/editar/'+evento._id]">Editar</a>
+				<a *ngIf="showBtnDeletar"
+				   class="btn btn-danger"
+				   (click)="deletar(evento)">Excluir</a>
 			</td>
 		</tr>
 	</tbody>

@@ -83,9 +83,10 @@ module.exports = function (app) {
 					if (erro) {
 						response.json(erro);
 					} else {
-						response.send(`Evento ${descricao} removido`);
+						// response.send(`Evento ${descricao} removido`);
 						// o response.send exibe um retorno escrito pra 'tela'
 						// quando formos de fato integrar e usar o webservice, precisamos mudar para response.json
+						response.json(eventoApagado);
 					}
 				});
 			}

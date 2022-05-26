@@ -95,6 +95,9 @@ Criamos o HTML exibindo via binding as informações
 E na listagem de eventos colocamos o routerLink no botão de ver evento
 <a class="btn btn-info" [routerLink]="['/eventos/ver/'+evento._id]">Ver</a>
 
+
+******************************************************************
+
 Comando para criar componente de editar:
 
 $ ng generate component components/pages/events/edit
@@ -110,5 +113,21 @@ import * as moment from 'moment';
 - Usando:
 this.evento.data = moment(evento.data).format('YYYY-MM-DD')
 
+******************************************************************
+
 *** DICA DA API ***
 Para facilitar a tratativa de data no banco de dados, tanto no post quando no put do controller de eventos, podemos colocar "+ 'T03:00:00'" na frente do campo de data, pois a data vai com 'ano-mes-dia' no formato dela
+
+
+******************************************************************
+
+Service de Log
+
+$ ng generate service services/log
+
+Usamos o log com base em feature flag, que se o ambiente não for produção, as informações serão exibidas no console do navegador.
+Essas informações de log, mapeiam todo o fluxo do sistema para verificar se algum erro pode ser sido 'encontrado' e no fim, enviamos essas informações via analytics
+
+O que é feature flag/feature toggle?
+
+É uma 'variável' que é criada para controlar partes da tela e funcionalidades baseados em ambientes configurados (environments) - dev, teste, pré-produção, produção...
