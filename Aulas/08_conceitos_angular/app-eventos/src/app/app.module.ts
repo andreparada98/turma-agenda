@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventCreateComponent } from './components/pages/events/create/create.component';
@@ -12,6 +13,11 @@ import { EventsSeeComponent } from './components/pages/events/see/see.component'
 import { HomeComponent } from './components/pages/home/home.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { SharedModule } from './components/shared/shared.module';
+import { DestaqueDirective } from './diretivas/destaque.directive';
+import { NgShowDirective } from './diretivas/ng-show.directive';
+import { EmailPipe } from './pipes/email.pipe';
+import { SubListaPipe } from './pipes/sub-lista.pipe';
+import { UppercasePipe } from './pipes/uppercase.pipe';
 
 @NgModule({
 	declarations: [
@@ -21,7 +27,12 @@ import { SharedModule } from './components/shared/shared.module';
 		EventCreateComponent,
 		NotFoundComponent,
 		EventsSeeComponent,
-		EventsEditComponent
+		EventsEditComponent,
+		UppercasePipe,
+		EmailPipe,
+		SubListaPipe,
+		NgShowDirective,
+		DestaqueDirective
 	],
 	imports: [
 		AppRoutingModule,
@@ -31,7 +42,10 @@ import { SharedModule } from './components/shared/shared.module';
 		HttpClientModule,
 		SharedModule
 	],
-	providers: [],
+	providers: [
+		BsModalRef,
+		BsModalService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

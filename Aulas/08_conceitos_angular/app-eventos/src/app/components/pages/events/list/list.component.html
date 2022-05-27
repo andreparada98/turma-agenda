@@ -1,4 +1,17 @@
-<h1>Lista de Eventos</h1>
+<h1 *ngShow="eventos.length != 0">Lista de Eventos</h1>
+
+<div class="form-group row">
+	<label for="descricao"
+		   class="control-label col-3">
+		Informe parte da descrição:
+	</label>
+	<input type="text"
+		   id="descricao"
+		   name="descricao"
+		   class="form-control col-9"
+		   #busca
+		   (keyup)="0" />
+</div>
 
 <table class="table table-striped">
 	<thead>
@@ -16,7 +29,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let evento of eventos">
+		<tr *ngIf="eventos.length == 0">
+			<td colspan="4">Sem eventos</td>
+		</tr>
+		<tr *ngFor="let evento of eventos | subLista: busca.value"
+			appDestaque>
 			<td>
 				{{evento.descricao}}
 			</td>
@@ -35,8 +52,19 @@
 				   [routerLink]="['/eventos/editar/'+evento._id]">Editar</a>
 				<a *ngIf="showBtnDeletar"
 				   class="btn btn-danger"
-				   (click)="deletar(evento)">Excluir</a>
+				   (click)="deletar(evento)">Excluir</a><a *ngIf="showBtnDeletar"
+				   class="btn btn-danger"
+				   (click)="openModal(template, evento)">Modal</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
+
+<ng-template #template>
+	<div class="modal-header">
+		<h2>Excluir Evento</h2>
+	</div>
+	<div class="modal-body">
+		{{initialState.evento}}
+	</div>
+</ng-template>

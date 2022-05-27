@@ -5,7 +5,7 @@ export const environment = {
 		urlUsuarios: "http://prod.com.br/usuarios"
 	},
 	featureFlag: {
-		showLog: false,
+		showLog: true,
 		shared: {
 			menu: {
 				home: true,

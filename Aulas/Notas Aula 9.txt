@@ -1,0 +1,13 @@
+Pipes / Filtros
+
+São elementos que transformam o resultado apresentado para o usuário
+
+$ ng generate pipe pipes/nome-pipe
+
+@Pipe({
+    name: 'uppercase'
+})
+
+export class UppercasePipe implements PipeTransform {
+    transform()
+}

@@ -4,6 +4,10 @@
 
 export const environment = {
 	production: false,
+	webservice: {
+		urlEventos: "http://localhost:3200/eventos",
+		urlUsuarios: "http://localhost:3200/usuarios"
+	},
 	featureFlag: {
 		showLog: true,
 		shared: {
@@ -12,16 +16,16 @@ export const environment = {
 				eventos: {
 					pai: true,
 					lista: true,
-					cadastrar: false
+					cadastrar: true
 				}
 			}
 		},
 		pages: {
 			eventos: {
 				listaEventos: {
-					btnVer: false,
+					btnVer: true,
 					btnEditar: true,
-					btnDeletar: false
+					btnDeletar: true
 				}
 			}
 		}

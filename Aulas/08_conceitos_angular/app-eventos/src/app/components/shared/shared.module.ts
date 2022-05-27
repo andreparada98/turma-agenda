@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MenuComponent } from './menu/menu.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
 	declarations: [
-		MenuComponent
+		MenuComponent,
+  ModalComponent
 	],
 	imports: [
 		CommonModule,

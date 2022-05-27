@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Evento } from '../interfaces/evento';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class WebserviceService {
-	urlEventos: string = "http://localhost:3200/eventos";
+	urlEventos: string = environment.webservice.urlEventos;
+	urlUsuarios: string = environment.webservice.urlUsuarios;
 
 	// declaramos como 'private' o http para disponibilizar o uso desse serviço para a classe WebserviceService, dessa maneira podendo realizar requisições (get, post, put...)
 	constructor(private http: HttpClient) { }
