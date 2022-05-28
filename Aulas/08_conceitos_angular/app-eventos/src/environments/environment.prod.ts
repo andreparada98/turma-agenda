@@ -12,7 +12,7 @@ export const environment = {
 				eventos: {
 					pai: true,
 					lista: true,
-					cadastrar: false
+					cadastrar: true
 				}
 			}
 		},

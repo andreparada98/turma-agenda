@@ -13,6 +13,49 @@
 		   (keyup)="0" />
 </div>
 
+<app-list [categoria]="'Evento'"
+		  [itens]="eventos">
+	<ng-container header>
+		<th>
+			Descrição
+		</th>
+		<th>
+			Data
+		</th>
+		<th>
+			Valor
+		</th>
+		<th></th>
+	</ng-container>
+	<ng-container body>
+		<tr *ngFor="let evento of eventos | subLista: busca.value"
+			appDestaque>
+			<td>
+				{{evento.descricao}}
+			</td>
+			<td>
+				{{evento.data | date: 'dd/MM/yyyy'}}
+			</td>
+			<td>
+				{{evento.preco | currency: 'BRL'}}
+			</td>
+			<td>
+				<a *ngIf="showBtnVer"
+				   class="btn btn-info"
+				   [routerLink]="['/eventos/ver/'+evento._id]">Ver</a>
+				<a *ngIf="showBtnEditar"
+				   class="btn btn-warning"
+				   [routerLink]="['/eventos/editar/'+evento._id]">Editar</a>
+				<a *ngIf="showBtnDeletar"
+				   class="btn btn-danger"
+				   (click)="deletar(evento)">Excluir</a><a *ngIf="showBtnDeletar"
+				   class="btn btn-danger"
+				   (click)="openModal(template, evento)">Modal</a>
+			</td>
+		</tr>
+	</ng-container>
+</app-list>
+<!--
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -59,7 +102,7 @@
 		</tr>
 	</tbody>
 </table>
-
+-->
 <ng-template #template>
 	<div class="modal-header">
 		<h2>Excluir Evento</h2>

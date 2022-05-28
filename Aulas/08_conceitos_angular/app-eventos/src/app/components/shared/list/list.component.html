@@ -1,0 +1,15 @@
+<h2>Lista {{categoria}}</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<ng-content select="[header]"></ng-content>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngIf="itens.length === 0">
+			<td [attr.colspan]="qtdTH.length">Sem {{categoria}}s</td>
+		</tr>
+		<ng-content *ngIf="itens.length !== 0"
+					select="[body]"></ng-content>
+	</tbody>
+</table>

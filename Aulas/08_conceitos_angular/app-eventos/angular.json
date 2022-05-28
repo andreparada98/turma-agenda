@@ -45,7 +45,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/app-eventos",
+						"outputPath": "dist/eventos",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -61,7 +61,7 @@
 						"scripts": []
 					},
 					"configurations": {
-						"production": {
+						"prod": {
 							"budgets": [
 								{
 									"type": "initial",
@@ -106,7 +106,7 @@
 							"outputHashing": "all",
 							"namedChunks": true
 						},
-						"development": {
+						"dev": {
 							"buildOptimizer": false,
 							"optimization": false,
 							"vendorChunk": true,
@@ -115,22 +115,22 @@
 							"namedChunks": true
 						}
 					},
-					"defaultConfiguration": "production"
+					"defaultConfiguration": "prod"
 				},
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-						"production": {
-							"browserTarget": "app-eventos:build:production"
+						"prod": {
+							"browserTarget": "app-eventos:build:prod"
 						},
 						"pre-prod": {
 							"browserTarget": "app-eventos:build:pre-prod"
 						},
-						"development": {
-							"browserTarget": "app-eventos:build:development"
+						"dev": {
+							"browserTarget": "app-eventos:build:dev"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "dev"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
